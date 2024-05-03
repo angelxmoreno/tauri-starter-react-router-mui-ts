@@ -10,13 +10,15 @@
         "tauri": "tauri",
         "prepare": "[ -d .git ] && husky install || echo 'Skipping Husky install'",
         "commitlint": "commitlint --edit",
-        "lint": "eslint . --max-warnings 0",
-        "lint:fix": "eslint . --fix"
+        "lint": "eslint src/** --max-warnings 0",
+        "lint:fix": "eslint src/** --fix --cache"
     },
     "dependencies": {
         "@emotion/react": "^11.11.4",
         "@emotion/styled": "^11.11.5",
         "@fontsource/roboto": "^5.0.13",
+        "@mdi/js": "^7.4.47",
+        "@mdi/react": "^1.6.1",
         "@mui/icons-material": "^5.15.16",
         "@mui/material": "^5.15.16",
         "@tauri-apps/api": "^1",
