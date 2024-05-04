@@ -37,6 +37,20 @@ For the database aspect of the starter kit we use the following modules:
 
 -   [Plugin-SQL v1 Core plugin](https://github.com/tauri-apps/plugins-workspace/tree/v1/plugins/sql)
 -   [Plugin-SQL v1 JS bindings](https://github.com/tauri-apps/tauri-plugin-sql#v1)
+-   _better-sqlite3 + kysely-codegen_ for type generation
+-   _kysely-bun-sqlite + kysely-migration-cli_ for migrations management
+
+### Running migrations
+
+`bun db:migration up`
+
+### Creating migrations
+
+`bun db:migration create`
+
+### Generating Kysely database types
+
+`bun db:generate `
 
 ## TODOS
 
