@@ -55,3 +55,4 @@ For the database aspect of the starter kit we use the following modules:
 ## TODOS
 
 -   [ ] consider a modern linter like [dprint](https://dprint.dev/overview/) or [biomejs](https://biomejs.dev/)
+-   [ ] streamline the process of identifying and setting the db path outside of Tauri for the kysely CLI tools
