@@ -1,58 +1,92 @@
-# Tauri + React + Typescript
+# Tauri + React + Typescript Starter Kit
 
-This template should help get you started developing with Tauri. Below are the installed components:
+Welcome to the Tauri + React + Typescript Starter Kit! This template is designed to help non-Rust developers quickly get started with building cross-platform desktop applications using Tauri. Below, you'll find everything you need to kickstart your development journey.
+
+## Getting Started
+
+### Installation
+
+1. Clone this repository to your local machine.
+    ```sh
+    git clone https://github.com/angelxmoreno/tauri-starter-react-router-mui-ts.git tauri-app
+    ```
+2. Navigate to the project directory.
+    ```sh
+    cd tauri-app
+    ```
+3. Install dependencies using your preferred package manager:
+    ```sh
+    bun i
+    ```
+4. @todo the DB migration?
+
+### Development
+
+To start the development server and launch the application:
+
+```
+bun tauri dev
+```
+
+This will start the tauri app.
+
+### Production Build
+
+To build the application for production:
+
+```
+bunx tauri build
+```
+
+## Features
+
+This starter kit comes packed with the following features and libraries:
 
 -   React
 -   Typescript
 -   Vite
 -   Material Design Icons
-    -   @mdi/js
-    -   @mdi/react
 -   Material UI
-    -   @mui/material
-    -   @emotion/react
-    -   @emotion/styled
-    -   @fontsource/roboto
-    -   @mui/icons-material
 -   React Router
 -   Zustand
--   Path aliases asd vite-tsconfig-paths
+-   Path aliases with vite-tsconfig-paths
 -   Eslint
 -   Prettier
 -   lint-staged
 -   husky
 -   commit-lint
+-   Kysely
+-   Tauri-Plugin-SQL
 
 ## Database Integration
 
-We use [Kysely](https://kysely.dev/) (The type-safe SQL query builder for TypeScript)
-and [Plugin-SQL v1](https://github.com/tauri-apps/plugins-workspace/tree/v1/plugins/sql).
-Seeing how this starter kit is aimed at Non-Rust TS devs, we will be handling our migrations using TS. The setup comes
-across a bit clunky because in the TauriApp we will be using
-[kysely-dialect-tauri](https://github.com/subframe7536/kysely-sqlite-tools/tree/master/packages/dialect-tauri) but
-outside the app we will be using [kysely-bun-sqlite](https://github.com/dylanblokhuis/kysely-bun-sqlite).
-@todo: explain why in further detail.
+We use [Kysely](https://kysely.dev/) for type-safe SQL queries and migrations management. This enables seamless database integration for TypeScript developers. Below are the steps to manage your database:
 
-For the database aspect of the starter kit we use the following modules:
+### Running Migrations
 
--   [Plugin-SQL v1 Core plugin](https://github.com/tauri-apps/plugins-workspace/tree/v1/plugins/sql)
--   [Plugin-SQL v1 JS bindings](https://github.com/tauri-apps/tauri-plugin-sql#v1)
--   _better-sqlite3 + kysely-codegen_ for type generation
--   _kysely-bun-sqlite + kysely-migration-cli_ for migrations management
+To apply pending migrations:
 
-### Running migrations
+```
+bun db:migration up
+```
 
-`bun db:migration up`
+### Creating Migrations
 
-### Creating migrations
+To create a new migration:
 
-`bun db:migration create`
+```
+bun db:migration create
+```
 
-### Generating Kysely database types
+### Generating Kysely Database Types
 
-`bun db:generate `
+To generate database types:
 
-## TODOS
+```
+bun db:generate
+```
 
--   [ ] consider a modern linter like [dprint](https://dprint.dev/overview/) or [biomejs](https://biomejs.dev/)
--   [ ] streamline the process of identifying and setting the db path outside of Tauri for the kysely CLI tools
+## TODOs
+
+-   [ ] Consider a modern linter like [dprint](https://dprint.dev/overview/) or [biomejs](https://biomejs.dev/).
+-   [ ] Streamline the process of identifying and setting the database path outside of Tauri for the Kysely CLI tools.
