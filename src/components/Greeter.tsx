@@ -1,4 +1,5 @@
 import { IconComponent } from '@app/components/IconComponent.tsx';
+import { Greetings } from '@app/database/dbTypes.ts';
 import { useGreetings } from '@app/database/hooks/useGreetings.ts';
 import { Button, FormGroup, IconButton, TextField } from '@mui/material';
 import Paper from '@mui/material/Paper';
@@ -9,21 +10,44 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { formatDistanceToNow } from 'date-fns';
-import { FC, FormEventHandler, useEffect, useState } from 'react';
+import { Selectable } from 'kysely';
+import { FC, FormEventHandler, useCallback, useEffect, useState } from 'react';
+
+type TextInputOnChangeHandler = FormEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 
 const Greeter: FC = () => {
     const { greetings, getGreetings, addGreeting, deleteGreetings } = useGreetings();
     const [greetMsg, setGreetMsg] = useState('');
     const [name, setName] = useState('');
 
-    const handleOnButtonClick = async () => {
+    const handleOnButtonClick = useCallback(() => {
         if (name.trim() === '') return;
         addGreeting(name);
         setGreetMsg(`Hello ${name}`);
-    };
+    }, []);
 
-    const handleOnTextChange: FormEventHandler<HTMLInputElement | HTMLTextAreaElement> = e =>
-        setName(e.currentTarget.value);
+    const handleOnTextChange: TextInputOnChangeHandler = e => setName(e.currentTarget.value);
+
+    const renderTableRow = useCallback(
+        (row: Selectable<Greetings>) => (
+            <TableRow key={row.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                <TableCell size="small">
+                    <IconButton
+                        color="error"
+                        onClick={() => deleteGreetings(Number(row.id))}
+                        aria-label="Delete greeting"
+                    >
+                        <IconComponent iconName="Delete" />
+                    </IconButton>
+                </TableCell>
+                <TableCell>{row.id}</TableCell>
+                <TableCell>{row.name}</TableCell>
+                <TableCell>{formatDistanceToNow(row.created_at)}</TableCell>
+            </TableRow>
+        ),
+        [],
+    );
+
     useEffect(() => {
         getGreetings();
     }, []);
@@ -55,20 +79,7 @@ const Greeter: FC = () => {
                             </TableCell>
                         </TableRow>
                     </TableHead>
-                    <TableBody>
-                        {greetings.map(row => (
-                            <TableRow key={row.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                                <TableCell size="small">
-                                    <IconButton color="error" onClick={() => deleteGreetings(Number(row.id))}>
-                                        <IconComponent iconName="Delete" />
-                                    </IconButton>
-                                </TableCell>
-                                <TableCell>{row.id}</TableCell>
-                                <TableCell>{row.name}</TableCell>
-                                <TableCell>{formatDistanceToNow(row.created_at)}</TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
+                    <TableBody>{greetings.map(renderTableRow)}</TableBody>
                 </Table>
             </TableContainer>
         </div>

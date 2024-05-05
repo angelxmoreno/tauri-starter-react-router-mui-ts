@@ -13,7 +13,7 @@ const HomeScreen: FC = () => {
             <Anchor to="/theme-control">see more</Anchor>
             <hr />
             <h2>Database Integration</h2>
-            <p>Combing Plugin-SQL, Kysely and Zustand; create local-first components.</p>
+            <p>Combining Plugin-SQL, Kysely and Zustand; create local-first components.</p>
             <Anchor to="/database-integration">see more</Anchor>
         </>
     );
