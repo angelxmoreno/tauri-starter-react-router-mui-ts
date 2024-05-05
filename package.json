@@ -25,6 +25,7 @@
         "@mui/icons-material": "^5.15.16",
         "@mui/material": "^5.15.16",
         "@tauri-apps/api": "^1",
+        "date-fns": "^3.6.0",
         "kysely": "^0.27.3",
         "kysely-dialect-tauri": "^0.6.0",
         "react": "^18.2.0",

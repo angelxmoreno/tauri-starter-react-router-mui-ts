@@ -1,22 +1,20 @@
-import { useSettingsStore } from '@app/stores/settings-store.ts';
-import { Button } from '@mui/material';
+import Anchor from '@app/components/Anchor.tsx';
 import Typography from '@mui/material/Typography';
 import { FC } from 'react';
 
 const HomeScreen: FC = () => {
-    const { themeMode, setLightMode, setDarkMode } = useSettingsStore();
-
     return (
         <>
-            <Typography paragraph>
-                This is the home screen {themeMode === null ? 'with no theme set' : `with the ${themeMode} theme.`}
-            </Typography>
-            <Button variant="outlined" onClick={setLightMode}>
-                Light Theme
-            </Button>{' '}
-            <Button variant="contained" onClick={setDarkMode}>
-                Dark Theme
-            </Button>
+            <h1>Tauri Starter Kit</h1>
+            <Typography>Below you will find examples usage of the starter kit</Typography>
+            <hr />
+            <h2>Theme Control</h2>
+            <p>Control dark/light mode with persistence across app launches. This uses Zustand and localstorage.</p>
+            <Anchor to="/theme-control">see more</Anchor>
+            <hr />
+            <h2>Database Integration</h2>
+            <p>Combing Plugin-SQL, Kysely and Zustand; create local-first components.</p>
+            <Anchor to="/database-integration">see more</Anchor>
         </>
     );
 };
