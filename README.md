@@ -23,6 +23,36 @@ This template should help get you started developing with Tauri. Below are the i
 -   husky
 -   commit-lint
 
+## Database Integration
+
+We use [Kysely](https://kysely.dev/) (The type-safe SQL query builder for TypeScript)
+and [Plugin-SQL v1](https://github.com/tauri-apps/plugins-workspace/tree/v1/plugins/sql).
+Seeing how this starter kit is aimed at Non-Rust TS devs, we will be handling our migrations using TS. The setup comes
+across a bit clunky because in the TauriApp we will be using
+[kysely-dialect-tauri](https://github.com/subframe7536/kysely-sqlite-tools/tree/master/packages/dialect-tauri) but
+outside the app we will be using [kysely-bun-sqlite](https://github.com/dylanblokhuis/kysely-bun-sqlite).
+@todo: explain why in further detail.
+
+For the database aspect of the starter kit we use the following modules:
+
+-   [Plugin-SQL v1 Core plugin](https://github.com/tauri-apps/plugins-workspace/tree/v1/plugins/sql)
+-   [Plugin-SQL v1 JS bindings](https://github.com/tauri-apps/tauri-plugin-sql#v1)
+-   _better-sqlite3 + kysely-codegen_ for type generation
+-   _kysely-bun-sqlite + kysely-migration-cli_ for migrations management
+
+### Running migrations
+
+`bun db:migration up`
+
+### Creating migrations
+
+`bun db:migration create`
+
+### Generating Kysely database types
+
+`bun db:generate `
+
 ## TODOS
 
 -   [ ] consider a modern linter like [dprint](https://dprint.dev/overview/) or [biomejs](https://biomejs.dev/)
+-   [ ] streamline the process of identifying and setting the db path outside of Tauri for the kysely CLI tools
