@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Splash Page</title>
+    <style>
+        html {
+            line-height: 1.15; /* 1 */
+            -webkit-text-size-adjust: 100%; /* 2 */
+            overflow: hidden;
+            overscroll-behavior: none;
+        }
+
+        body {
+            margin: 0;
+            background-color: black;
+        }
+
+        img {
+            border-style: none;
+        }
+
+        #content {
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+
+        }
+    </style>
+</head>
+
+<body>
+<div id="content">
+    <img
+        src="./tauri.svg"
+        alt="tauri logo"
+        height="90"
+        width="90" />
+    <img
+        src="./vite.svg"
+        alt="vite logo"
+        height="90"
+        width="90" />
+    <img
+        src="./react.svg"
+        alt="react"
+        height="90"
+        width="90" />
+</div>
+<script>
+    const invoke = window.__TAURI__.invoke
+    setTimeout(()=> {
+        invoke('close_splashscreen')
+    }, 1500)
+</script>
+</body>
+</html>

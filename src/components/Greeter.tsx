@@ -11,7 +11,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { formatDistanceToNow } from 'date-fns';
 import { Selectable } from 'kysely';
-import { FC, FormEventHandler, useCallback, useEffect, useMemo, useState } from 'react';
+import { FC, FormEventHandler, useCallback, useEffect, useState } from 'react';
 
 type TextInputOnChangeHandler = FormEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 

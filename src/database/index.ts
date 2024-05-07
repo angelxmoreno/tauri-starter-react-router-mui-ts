@@ -9,11 +9,12 @@ const dialect = new TauriSqlDialect({
     type: 'sqlite',
     // @ts-ignore
     database: async () => {
+        const dbName = 'tauriAppDB.db';
         const appDataDirPath = await appDataDir();
 
-        const dbPath = import.meta.env.DEV ? import.meta.env.VITE_DATABASE_URL : `${appDataDirPath}/appProdDb.db`;
+        const dbPath = `${appDataDirPath}/${dbName}`;
         console.info(`Using db located at ${dbPath}`);
-        return Database.load(`sqlite:${dbPath}`);
+        return Database.load(`sqlite:${dbName}`);
     },
 });
 
