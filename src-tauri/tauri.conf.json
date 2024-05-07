@@ -24,8 +24,18 @@
         "windows": [
             {
                 "title": "tauri-app-vite-react-mui",
-                "width": 800,
-                "height": 600
+                "width": 1024,
+                "height": 800,
+                "visible": false,
+                "resizable": true
+            },
+            {
+                "width": 300,
+                "height": 150,
+                "decorations": false,
+                "url": "/splash-page.html",
+                "resizable": false,
+                "label": "splashscreen"
             }
         ],
         "security": {
@@ -34,7 +44,7 @@
         "bundle": {
             "active": true,
             "targets": "all",
-            "identifier": "com.tauri.dev",
+            "identifier": "com.tauri.starter",
             "icon": [
                 "icons/32x32.png",
                 "icons/128x128.png",

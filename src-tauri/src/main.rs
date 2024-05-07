@@ -7,14 +7,26 @@ fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
 }
 
+use tauri::{Manager, Window};
+// Create the command:
+// This command must be async so that it doesn't run on the main thread.
+#[tauri::command]
+async fn close_splashscreen(window: Window) {
+  // Close splashscreen
+  window.get_window("splashscreen").expect("no window labeled 'splashscreen' found").close().unwrap();
+  // Show main window
+  window.get_window("main").expect("no window labeled 'main' found").show().unwrap();
+}
 
 mod migrations;
 
 use migrations::get_migrations;
+
 fn main() {
     let migrations = get_migrations();
+
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet])
+        .invoke_handler(tauri::generate_handler![close_splashscreen, greet])
         .plugin(
             tauri_plugin_sql::Builder::default()
                 .add_migrations("sqlite:tauriAppDB.db", migrations)
