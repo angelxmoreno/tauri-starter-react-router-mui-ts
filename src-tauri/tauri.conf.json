@@ -24,7 +24,19 @@
             },
             "shell": {
                 "all": false,
-                "open": true
+                "open": true,
+                "sidecar": true,
+                "scope": [
+                    {
+                        "name": "binaries/extractRss",
+                        "sidecar": true,
+                        "args": [
+                            {
+                                "validator": "\\S+"
+                            }
+                        ]
+                    }
+                ]
             },
             "fs": {
                 "all": true,
@@ -55,6 +67,7 @@
             "csp": "default-src 'self'; img-src 'self' asset: https://asset.localhost"
         },
         "bundle": {
+            "externalBin": ["binaries/extractRss"],
             "active": true,
             "targets": "all",
             "identifier": "com.tauri.starter",
