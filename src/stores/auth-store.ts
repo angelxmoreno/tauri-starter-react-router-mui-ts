@@ -34,7 +34,9 @@ const stateCreator: StateCreator<Store> = set => ({
                 set({ deviceCodeResponse });
                 return api.startFetchTokenPolling();
             })
-            .finally(() => {
+            .catch(error => {
+                console.error('Error during device code creation:', error);
+            }).finally(() => {
                 set({ isFetching: false });
             });
     },
