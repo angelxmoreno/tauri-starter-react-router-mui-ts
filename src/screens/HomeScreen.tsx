@@ -6,6 +6,7 @@ const HomeScreen: FC = () => {
     return (
         <>
             <h1>Tauri Starter Kit</h1>
+            <hr />
             <Typography>Below you will find examples usage of the starter kit</Typography>
             <hr />
             <h2>Theme Control</h2>
@@ -15,6 +16,10 @@ const HomeScreen: FC = () => {
             <h2>Database Integration</h2>
             <p>Combining Plugin-SQL, Kysely and Zustand; create local-first components.</p>
             <Anchor to="/database-integration">see more</Anchor>
+            <hr />
+            <h2>Authentication</h2>
+            <p>Using Google's Limited Devices auth flow, we are able to create a user auth state.</p>
+            <Anchor to="/auth-integration">see more</Anchor>
         </>
     );
 };

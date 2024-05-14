@@ -30,6 +30,7 @@ const MenuDrawer: FC = () => {
                     <ListItemButtonLink to="/" label="Home" iconName="Inbox" />
                     <ListItemButtonLink to="/theme-control" label="Theme" iconName="Contrast" />
                     <ListItemButtonLink to="/database-integration" label="Database" iconName="Storage" />
+                    <ListItemButtonLink to="/auth-integration" label="Authentication" iconName="ManageAccounts" />
                     <ListItemButtonLink to="/other" label="Other" iconName="MoveToInbox" />
                     <ListItemButtonLink to="/feeds" label="Feeds" iconName="RssFeed" />
                 </List>
