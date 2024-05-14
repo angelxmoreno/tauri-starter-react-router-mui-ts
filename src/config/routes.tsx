@@ -1,4 +1,5 @@
 import Layout from '@app/layout/Layout.tsx';
+import AuthScreen from '@app/screens/AuthScreen.tsx';
 import DbControlScreen from '@app/screens/DbControlScreen.tsx';
 import FeedsScreen from '@app/screens/FeedsScreen.tsx';
 import HomeScreen from '@app/screens/HomeScreen.tsx';
@@ -10,6 +11,7 @@ export const routes: RouteObject[] = [
     { path: '/', element: <HomeScreen />, index: true },
     { path: '/theme-control', element: <ThemeControlScreen /> },
     { path: '/database-integration', element: <DbControlScreen /> },
+    { path: '/auth-integration', element: <AuthScreen /> },
     { path: '/other', element: <OtherScreen /> },
     { path: '/feeds', element: <FeedsScreen /> },
 ];
